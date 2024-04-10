@@ -10,11 +10,12 @@ import java.util.stream.IntStream;
 
 public class Recaudacion {
 	private String filePath;
+	private OpenCSVReader openCSVReader;
 	public Recaudacion(String filePath){
 		this.filePath = filePath;
+		openCSVReader = new OpenCSVReader(filePath);
 	}
 	public List<Map<String, String>> where(Map<String, String> options) throws IOException {
-		OpenCSVReader openCSVReader = new OpenCSVReader(filePath);
 		List<String[]> csvData = openCSVReader.readCSV();
 
 		// Filtramos los datos según las opciones proporcionadas
